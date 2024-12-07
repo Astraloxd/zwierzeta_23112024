@@ -1,11 +1,11 @@
 package animals;
 
-public class Animal {
-    protected String name;
-    protected int age;
-    protected double weight;
+public abstract class Animal {
+    private String name;
+    private int age;
+    private double weight;
 
-    public Animal() {
+    public Animal(String name) {
         this.name = "Unknown";
         this.age = 0;
         this.weight = 0.0;
@@ -17,19 +17,15 @@ public class Animal {
         this.weight = weight;
     }
 
-    public Animal(String name) {
+    public Animal(String name, double weight) {
         this.name = name;
         this.age = 0;
-        this.weight = 0.0;
+        this.weight = weight;
     }
 
-    public void eat() {
-        System.out.println(name + " is eating.");
-    }
+    public abstract void eat();
 
-    public String getVoice() {
-        return "Animal sound";
-    }
+    public abstract String getVoice();
 
     public String getName() {
         return name;
@@ -57,6 +53,6 @@ public class Animal {
 
     @Override
     public String toString() {
-        return "Animal{name='" + name + "', age=" + age + ", weight=" + weight + '}';
+        return "Animal{name='" + name + "', age=" + age + ", weight=" + weight + "}";
     }
 }

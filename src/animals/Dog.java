@@ -1,6 +1,6 @@
 package animals;
 
-public class Dog extends Mammal {
+public class Dog extends Mammal implements AnimalBehavior, AnimalMove {
     private String breed;
 
     public Dog() {
@@ -8,19 +8,14 @@ public class Dog extends Mammal {
         this.breed = "Unknown";
     }
 
-    public Dog(String name, int age, double weight, String furType, String breed) {
-        super(name, age, weight, furType);
+    public Dog(String name, int age, double weight, boolean hasFur, String breed) {
+        super(name, age, weight, hasFur);
         this.breed = breed;
     }
 
-    public Dog(String name, String breed) {
-        super(name);
+    public Dog(String name, double weight, String breed) {
+        super(name, weight, true);
         this.breed = breed;
-    }
-
-    @Override
-    public String getVoice() {
-        return "Bark";
     }
 
     public String getBreed() {
@@ -32,11 +27,26 @@ public class Dog extends Mammal {
     }
 
     @Override
-    public String toString() {
-        return super.toString() + ", Dog{breed='" + breed + "'}";
+    public void getVoice() {
+        System.out.println(getName() + " barks.");
+    }
+
+    @Override
+    public void sleep() {
+        System.out.println(getName() + " sleeps in a kennel.");
+    }
+
+    @Override
+    public void move() {
+        System.out.println("Dog runs on four paws.");
     }
 
     public void fetch() {
-        System.out.println(name + " is fetching the ball.");
+        System.out.println(getName() + " is fetching the ball.");
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + ", Dog{breed='" + breed + "'}";
     }
 }

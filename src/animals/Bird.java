@@ -4,7 +4,7 @@ public class Bird extends Animal {
     private String featherColor;
 
     public Bird() {
-        super();
+        super(name);
         this.featherColor = "Unknown";
     }
 

@@ -1,10 +1,11 @@
 package animals;
 
-public class Fish extends Animal {
+public abstract class Fish extends Animal {
+    private static final Object name = ;
     private String scaleType;
 
-    public Fish() {
-        super();
+    public Fish(String name) {
+        super(name);
         this.scaleType = "Unknown";
     }
 
@@ -37,6 +38,6 @@ public class Fish extends Animal {
     }
 
     public void swim() {
-        System.out.println(name + " is swimming.");
+        System.out.println(getName() + " is swimming.");
     }
 }

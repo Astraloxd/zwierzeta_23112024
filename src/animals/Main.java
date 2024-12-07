@@ -2,23 +2,34 @@ package animals;
 
 public class Main {
     public static void main(String[] args) {
-        Animal[] animals = new Animal[6];
+        // Tablica referencji Animal
+        Animal[] animals = new Animal[3];
+        animals[0] = new Dog("Buddy", 5, 20.5, true, "Labrador");
+        animals[1] = new Pigeon("Sky", 2, 0.4, "White", "Carrier");
+        animals[2] = new Blowfish("Puffy", 1, 1.2, true, true);
 
-        animals[0] = new Dog("Buddy", 3, 20.5, "Short", "Labrador");
-        animals[1] = new Pigeon("Dove", 1, 0.5, "White", "Rock Pigeon");
-        animals[2] = new Blowfish("Bloaty", 2, 1.2, "Smooth", "Inflation Defense");
-        animals[3] = new Mammal("Bear", 5, 150.0, "Thick");
-        animals[4] = new Bird("Robin", 2, 0.7, "Red");
-        animals[5] = new Fish("Goldie", 1, 0.3, "Shiny");
-
+        // Pętla foreach dla metody move()
+        System.out.println("Animal Movement:");
         for (Animal animal : animals) {
-            System.out.println(animal.toString());
-            System.out.println("Voice: " + animal.getVoice());
-            animal.eat();
+            ((AnimalMove) animal).move();
         }
 
-        ((Dog) animals[0]).fetch();
-        ((Pigeon) animals[1]).peck();
-        ((Blowfish) animals[2]).inflate();
+        // Tablica referencji AnimalBehavior
+        AnimalBehavior[] behaviors = new AnimalBehavior[3];
+        behaviors[0] = (Dog) animals[0];
+        behaviors[1] = (Pigeon) animals[1];
+        behaviors[2] = (Blowfish) animals[2];
+
+        // Wywołanie metody sleep()
+        System.out.println("\nAnimal Sleep Behavior:");
+        for (AnimalBehavior behavior : behaviors) {
+            behavior.sleep();
+        }
+
+        // Wywołanie metody name()
+        System.out.println("\nAnimal Names:");
+        for (Animal animal : animals) {
+            AnimalName.name(animal.getName());
+        }
     }
 }

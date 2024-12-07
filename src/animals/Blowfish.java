@@ -1,42 +1,47 @@
 package animals;
 
-public class Blowfish extends Fish {
-    private String defenseMechanism;
+public class Blowfish extends Fish implements AnimalBehavior, AnimalMove {
+    private boolean canInflate;
 
     public Blowfish() {
-        super();
-        this.defenseMechanism = "Unknown";
-    }
-
-    public Blowfish(String name, int age, double weight, String scaleType, String defenseMechanism) {
-        super(name, age, weight, scaleType);
-        this.defenseMechanism = defenseMechanism;
-    }
-
-    public Blowfish(String name, String defenseMechanism) {
         super(name);
-        this.defenseMechanism = defenseMechanism;
+        this.canInflate = true;
+    }
+
+    public Blowfish(String name, int age, double weight, boolean hasScales, boolean canInflate) {
+        super(name, age, weight, hasScales);
+        this.canInflate = canInflate;
+    }
+
+    public Blowfish(String name, double weight, boolean canInflate) {
+        super(name, weight, true);
+        this.canInflate = canInflate;
+    }
+
+    public boolean isCanInflate() {
+        return canInflate;
+    }
+
+    public void setCanInflate(boolean canInflate) {
+        this.canInflate = canInflate;
     }
 
     @Override
-    public String getVoice() {
-        return "Puff";
+    public void sleep() {
+        System.out.println(getName() + " sleeps while floating in water.");
     }
 
-    public String getDefenseMechanism() {
-        return defenseMechanism;
+    @Override
+    public void move() {
+        System.out.println("Blowfish swims in water.");
     }
 
-    public void setDefenseMechanism(String defenseMechanism) {
-        this.defenseMechanism = defenseMechanism;
+    public void inflate() {
+        System.out.println(getName() + " is inflating itself.");
     }
 
     @Override
     public String toString() {
-        return super.toString() + ", Blowfish{defenseMechanism='" + defenseMechanism + "'}";
-    }
-
-    public void inflate() {
-        System.out.println(name + " is inflating.");
+        return super.toString() + ", Blowfish{canInflate=" + canInflate + "}";
     }
 }

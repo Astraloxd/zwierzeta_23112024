@@ -4,7 +4,7 @@ public class Mammal extends animals.Animal {
     private String furType;
 
     public Mammal() {
-        super();
+        super(name);
         this.furType = "Unknown";
     }
 
